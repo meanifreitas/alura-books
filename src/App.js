@@ -1,4 +1,6 @@
 import Header from './components/Header/index.js';
+import Search from './components/Search/index.js';
+import Latest from './components/Latest/index.js';
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
@@ -11,6 +13,8 @@ function App() {
   return (
     <AppContainer>
       <Header />
+      <Search />
+      <Latest />
     </AppContainer>
   );
 }
