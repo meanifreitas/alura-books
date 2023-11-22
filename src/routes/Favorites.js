@@ -1,5 +1,6 @@
-import Search from '../components/Search/index.js';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { getFavorites } from '../services/favorites';
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -8,9 +9,20 @@ const AppContainer = styled.div`
 `;
 
 function Favorites() {
+  const [favorites, setFavorites] = useState([]);
+
+  async function fetchFavorites() {
+    setFavorites(await getFavorites());
+  }
+  useEffect(() => {
+    fetchFavorites();
+  }, []);
+
   return (
     <AppContainer>
-      <Search />
+      {favorites.map((favorite) => {
+        return (<p>{favorite.name}</p>)
+      })}
     </AppContainer>
   );
 }
